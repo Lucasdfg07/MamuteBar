@@ -26,10 +26,10 @@ Rails.application.configure do
   config.assets.compile = false
 
   config.action_controller.perform_caching = true
-  config.cache_store = :dalli_store, '127.0.0.1:11211', {
-    expires_in: 1.day,
-    compress: true
-  }
+  # config.cache_store = :dalli_store, '127.0.0.1:11211', {
+  #   expires_in: 1.day,
+  #   compress: true
+  # }
   # `config.assets.precompile` and `config.assets.version` have moved to config/initializers/assets.rb
 
   # Enable serving of images, stylesheets, and JavaScripts from an asset server.
