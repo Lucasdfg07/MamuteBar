@@ -7,9 +7,6 @@ end
 
 gem 'devise'
 
-gem 'redis', '~> 3.0'
-gem 'sidekiq', '~> 5.0'
-
 gem 'devise-i18n'
 
 gem 'carrierwave', '~> 2.0'
