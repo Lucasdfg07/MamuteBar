@@ -1,0 +1,42 @@
+<section class="form_session text-center offset-md-4 col-md-4">
+  <%= image_tag 'mamute.jpg', alt: 'Logo Mamute Bar' %>
+
+  <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+
+
+    <div class="input-group">
+      <span class="input-group-addon"><%= fa_icon "user" %></span>
+      <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: 'Email', class: 'email' %>
+    </div>
+
+    <div class="input-group">
+      <span class="input-group-addon"><%= fa_icon "lock" %></span>
+      <%= f.password_field :password, autocomplete: "Senha", placeholder: 'Senha' %>
+    </div>
+
+
+    <% if devise_mapping.rememberable? %>
+      <section class="field">
+        <%= f.check_box :remember_me %>
+        <%= f.label :remember_me %>
+      </section>
+    <% end %>
+
+    <br />
+
+    <section class="actions">
+      <section class="row">
+        <section class="col-md-6">
+          <%= f.submit t('.sign_in'), class: 'btn btn-success' %>
+        </section>
+
+        <section class="col-md-6">
+          <%= link_to "Registrar-se", new_registration_path(resource_name), class: 'btn btn-info' %>
+        </section>
+      </section>
+
+      <br />
+      <%= link_to "Esqueci minha senha", new_password_path(resource_name), class: 'btn btn-dark' %>
+    </section>
+  <% end %>
+</section>

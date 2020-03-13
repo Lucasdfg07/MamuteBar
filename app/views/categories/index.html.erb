@@ -1,0 +1,32 @@
+<section class="text-center">
+  <h3>Categorias Cadastradas</h3>
+
+  <hr />
+
+  <table class="table table-bordered table-hover">
+    <thead>
+      <tr>
+        <th>Id</th>
+        <th width="60%">Nome</th>
+        <th></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @categories.each do |category| %>
+        <section style="display: none"><%= @count += 1 %></section>
+        <tr>
+          <td><%= @count %></td>
+          <td><%= category.name %></td>
+          <td><%= link_to 'Apagar', categories_path(category), :method => "delete", data: { confirm: 'Tem certeza?' }, class: 'btn btn-danger' %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+  <br />
+
+  <section class="pull-right new_sale_btn border">
+    <a href="categories/new"><%= fa_icon 'plus' %></a>
+  </section>
+</section>

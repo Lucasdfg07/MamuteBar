@@ -1,0 +1,19 @@
+.form_session {
+  margin-top: 5%;
+  box-shadow: -2px 2px 15px rgba(200,200,200,0.6);
+  padding: 20px;
+
+  img {
+    width: 150px;
+    box-shadow: -2px 2px 15px rgba(200,200,200,0.6);
+  }
+
+  .input-group {
+    margin-top: 30px;
+    margin-left: 10%;
+
+    span {
+      padding: 10px;
+    }
+  }
+}

@@ -1,0 +1,59 @@
+<section class="text-center">
+  <h3>Vendas Cadastradas</h3>
+
+  <hr />
+
+  <% @products.each do |product| %>
+    <% if product.verify_quantity %>
+      <section class="low_quantity">
+        <%= product.verify_quantity %>
+      </section>
+    <% end %>
+  <% end %>
+
+  <hr />
+
+  <section class="row">
+    <% @requests.group_by(&:table).each do |table, request| %>
+      <section class="col-md-4 text-center table_number border">
+        <%= image_tag 'bar.png', alt: 'Table Bar' %>
+
+        <section class="description">
+          <h4><%= table %></h4>
+        </section>
+
+        <section class="bill_information">
+          <section class="informations">
+            <section class="field border-bottom">
+              <table class="table table-hover">
+                <thead>
+                  <tr>
+                    <th>Item</th>
+                    <th>Quantidade</th>
+                    <th>Preço</th>
+                  </tr>
+                </thead>
+
+                <tbody>
+                  <% request.each do |r| %>
+                    <tr>
+                      <td><%= r.product.name %></td>
+                      <td><%= r.quantity %> Un.</td>
+                      <td>R$ <%= r.product.price * r.quantity %></td>
+                    </tr>
+                  <% end %>
+                </tbody>
+              </table>
+            </section>
+
+            <section class="field">
+              <b>Total a pagar: R$ <%= request[0].sum_bill_total(table) %></b>
+            </section>
+          </section>
+          <br />
+          <%= link_to 'Fechar conta', edit_sale_path(table), class: 'btn btn-dark' %>
+        </section>
+      </section>
+    <% end %>
+  </section>
+</section>

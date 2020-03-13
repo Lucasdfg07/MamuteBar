@@ -1,0 +1,37 @@
+<section class="text-center">
+  <h3>Produtos no Estoque</h3>
+
+  <hr />
+
+  <section class="pull-right">
+    <%= link_to 'Cadastrar novo Produto', new_product_path, class: 'btn btn-info' %>
+  </section>
+
+  <br />
+
+  <table class="table table-bordered table-hover">
+    <thead>
+      <tr>
+        <th>Id</th>
+        <th>Nome</th>
+        <th>Quantidade</th>
+        <th>Preço R$</th>
+        <th>Categoria</th>
+        <th></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @products.each do |product| %>
+        <tr>
+          <td><%= product.id %></td>
+          <td><%= product.name %></td>
+          <td><%= product.quantity %></td>
+          <td><%= product.price %></td>
+          <td><%= product.category.name %></td>
+          <td><%= link_to 'Editar', edit_product_path(product) %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</section>

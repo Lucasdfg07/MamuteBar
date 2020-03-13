@@ -1,0 +1,21 @@
+
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  host: postgres
+  user: postgres
+
+development:
+  <<: *default
+  database: mamutebar_development
+
+
+test:
+  <<: *default
+  database: mamutebar_test
+
+
+production:
+  <<: *default
+  database: mamutebar_production

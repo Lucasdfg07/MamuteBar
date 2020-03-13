@@ -1,0 +1,46 @@
+<section class="edit_user_data">
+  <h2>Editar Perfil</h2>
+
+  <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+    <%= render "devise/shared/error_messages", resource: resource %>
+
+    <section class="row">
+      <div class="field col-6">
+        <%= f.label :email %><br />
+        <%= f.email_field :email, autofocus: true, autocomplete: "email", class: 'border-bottom' %>
+      </div>
+
+      <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+        <div><%= t('.currently_waiting_confirmation_for_email', email: resource.unconfirmed_email) %></div>
+      <% end %>
+
+      <div class="field col-6">
+        <%= f.label :password %><br />
+        <%= f.password_field :password, autocomplete: "new-password", class: 'border-bottom' %>
+        <% if @minimum_password_length %>
+          <br />
+          <small>(<%= t('.leave_blank_if_you_don_t_want_to_change_it') %>)</small>
+
+          <br />
+          <small><%= t('devise.shared.minimum_password_length', count: @minimum_password_length) %></small>
+        <% end %>
+      </div>
+
+      <div class="field col-6">
+        <%= f.label :password_confirmation %><br />
+        <%= f.password_field :password_confirmation, autocomplete: "new-password", class: 'border-bottom' %>
+      </div>
+
+      <div class="field col-6">
+        <%= f.label :current_password %><br />
+        <%= f.password_field :current_password, autocomplete: "current-password", class: 'border-bottom' %>
+        <br />
+        <small>(<%= t('.we_need_your_current_password_to_confirm_your_changes') %>)</small>
+      </div>
+    </section>
+
+    <div class="actions text-center mt-4">
+      <%= f.submit t('.update'), class: 'btn btn-info' %>
+    </div>
+  <% end %>
+</section>

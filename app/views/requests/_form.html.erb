@@ -1,0 +1,36 @@
+<%= form_for(request) do |f| %>
+  <% if request.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(request.errors.count, "error") %> prohibited this request from being saved:</h2>
+
+      <ul>
+      <% request.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form_group">
+    <%= f.label :mesa %>
+    <%= f.number_field :table, min: 0, placeholder: 'Número da mesa', class: 'form-control' %>
+  </div>
+
+  <br />
+
+  <div class="row">
+    <div class="form-group col-6">
+      <%= f.label :Produto %>
+      <%= f.collection_select :product_id, Product.order('name ASC'), :id, :name, {include_blank: 'Selecione um Produto'}, {class: 'form-control'} %>
+    </div>
+
+    <div class="form-group col-6">
+      <%= f.label :quantidade %>
+      <%= f.number_field :quantity, step: :any, class: 'form-control' %>
+    </div>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "Salvar", class: 'btn btn-info' %>
+  </div>
+<% end %>

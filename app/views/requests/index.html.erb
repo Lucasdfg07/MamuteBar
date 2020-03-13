@@ -1,0 +1,36 @@
+<section class="text-center">
+  <h3>Tela de Pedidos</h3>
+
+  <hr />
+
+  <section class="pull-left">
+    <%= link_to 'Cadastrar novo Pedido', new_request_path, class: 'btn btn-info' %>
+  </section>
+
+  <br />
+
+  <table class="table table-bordered table-hover">
+    <thead>
+      <tr>
+        <th>Mesa</th>
+        <th>Pedido</th>
+        <th>Quantidade un.</th>
+        <th>Preço Total</th>
+        <th colspan="2"></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @requests.each do |request| %>
+        <tr>
+          <td><%= request.table %></td>
+          <td><%= request.product.name %></td>
+          <td><%= request.quantity %></td>
+          <td>R$ <%= request.product.price * request.quantity %></td>
+          <td><%= link_to 'Editar', edit_request_path(request), class: 'btn btn-info' %></td>
+          <td><%= link_to 'Cancelar pedido', request_path(request), :method => "delete", data: { confirm: 'Tem certeza?' }, class: 'btn btn-danger' %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</section>

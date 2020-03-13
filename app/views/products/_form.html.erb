@@ -1,0 +1,35 @@
+<section class="new_sale text-center">
+    <%= form_for product do |f| %>
+      <section class="card">
+        <section class="card-header">
+          Dados do Produto para Estoque
+        </section>
+
+        <section class="card-body">
+          <section class="form-group">
+            Categoria* <br />
+            <%= f.collection_select :category_id, Category.order('name ASC'), :id, :name, {include_blank: 'Selecione uma Categoria'}, {class: 'form-control'} %>
+          </section>
+
+          <section class="row">
+            <section class="col-4 form-group">
+              Nome* <br />
+              <%= f.text_field :name, class: 'form-control', required: true %>
+            </section>
+
+            <section class="col-4 form-group">
+              Quantidade* <br />
+              <%= f.number_field :quantity, min:0, class: 'form-control', required: true %>
+            </section>
+
+            <section class="col-4 form-group">
+              Preço por unidade* <br />
+              <%= f.number_field :price, step: :any, class: 'form-control', placeholder: 'R$', required: true %>
+            </section>
+          </section>
+
+          <%= f.submit 'Salvar', class: 'btn btn-primary save' %>
+        </section>
+      </section>
+    <% end %>
+</section>
