@@ -76,6 +76,7 @@ GEM
       execjs
     coffee-script-source (1.12.2)
     concurrent-ruby (1.1.6)
+    connection_pool (2.2.2)
     crass (1.0.6)
     devise (4.7.1)
       bcrypt (~> 3.0)
@@ -147,6 +148,8 @@ GEM
     rack-pjax (1.1.0)
       nokogiri (~> 1.5)
       rack (>= 1.1)
+    rack-protection (2.0.8.1)
+      rack
     rack-test (0.6.3)
       rack (>= 1.0)
     rails (5.0.7.2)
@@ -188,6 +191,7 @@ GEM
     rb-fsevent (0.10.3)
     rb-inotify (0.10.1)
       ffi (~> 1.0)
+    redis (3.3.5)
     remotipart (1.4.4)
     responders (3.0.0)
       actionpack (>= 5.0)
@@ -213,6 +217,11 @@ GEM
       sprockets (> 3.0)
       sprockets-rails
       tilt
+    sidekiq (5.2.7)
+      connection_pool (~> 2.2, >= 2.2.2)
+      rack (>= 1.5.0)
+      rack-protection (>= 1.5.0)
+      redis (>= 3.3.5, < 5)
     spring (2.1.0)
     spring-watcher-listen (2.0.1)
       listen (>= 2.7, < 4.0)
@@ -269,7 +278,9 @@ DEPENDENCIES
   puma (~> 3.0)
   rails (~> 5.0.1)
   rails_admin (~> 2.0)
+  redis (~> 3.0)
   sass-rails (~> 5.0)
+  sidekiq (~> 5.0)
   spring
   spring-watcher-listen (~> 2.0.0)
   turbolinks (~> 5)
