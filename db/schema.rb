@@ -35,10 +35,10 @@ ActiveRecord::Schema.define(version: 20200308161346) do
     t.integer  "product_id"
     t.integer  "quantity"
     t.integer  "table"
-    t.integer  "table_unique", default: 0
-    t.string   "status",       default: "opened"
-    t.datetime "created_at",                      null: false
-    t.datetime "updated_at",                      null: false
+    t.string   "payment"
+    t.string   "status",     default: "opened"
+    t.datetime "created_at",                    null: false
+    t.datetime "updated_at",                    null: false
     t.index ["product_id"], name: "index_requests_on_product_id", using: :btree
   end
 

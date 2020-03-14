@@ -4,7 +4,7 @@ class Request < ApplicationRecord
   before_create :update_product_quantity
 
   validates_presence_of :table, :quantity
-  validates :table_unique, :status, presence: false
+  validates :table_unique, :status, :payment, presence: false
 
 
   def sum_bill_total(table_id)
@@ -18,9 +18,17 @@ class Request < ApplicationRecord
     total
   end
 
-  def close_table_bill(table_id)
+  def close_table_bill(table_id, payment)
     table = Request.where(table: table_id, status: :opened)
-    table.update(status: :closed)
+    table.update(status: :closed, payment: payment)
+  end
+
+  def get_total_price_sold
+    products = Product.all
+
+    products.each do |product|
+      
+    end
   end
 
   private

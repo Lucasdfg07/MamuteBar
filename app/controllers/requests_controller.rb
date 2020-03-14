@@ -3,7 +3,7 @@ class RequestsController < ApplicationController
 
 
   def index
-    @requests = Request.where(status: :opened).order(table: :ASC)
+    @requests = Request.where(status: :opened).order(table: :ASC).paginate(page: params[:page], per_page: 10)
   end
 
   def new

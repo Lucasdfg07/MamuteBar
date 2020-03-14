@@ -4,7 +4,7 @@ class CreateRequests < ActiveRecord::Migration[5.0]
       t.references :product, foreign_key: true
       t.integer :quantity
       t.integer :table
-      t.integer :table_unique, default: '0'
+      t.string :payment
       t.string :status, default: 'opened'
 
       t.timestamps
