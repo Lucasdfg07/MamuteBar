@@ -1,18 +1,1 @@
-<section class="new_sale text-center">
-    <%= form_for @category do |f| %>
-      <section class="card">
-        <section class="card-header">
-          Dados da Venda
-        </section>
-
-        <section class="card-body">
-          <section class="form-group">
-            Nome da Categoria* <br />
-            <%= f.text_field :name, class: 'form-control' %>
-          </section>
-
-          <%= f.submit 'Salvar', class: 'btn btn-primary save' %>
-        </section>
-      </section>
-    <% end %>
-</section>
+<%= render 'form', category: @category %>
