@@ -87,10 +87,12 @@ Here are the technologies used in this project.
 ## Features
 
 The main features of the application are:
- - Fill a psicologic form about a patient.
- - Create a patient.
- - Edit his form.
- - See the psicologic graph made above the concepts in or out the pdf form.
+ - Register bar product's.
+ - Control the requests.
+ - Control the sales.
+ - Control the market pucharse.
+ - Show the sales and the pucharses in a graph.
+ - Control the payment method.
 
 
 ## Links
