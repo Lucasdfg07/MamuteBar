@@ -6,11 +6,6 @@
         </section>
 
         <section class="card-body">
-          <section class="form-group">
-            Categoria* <br />
-            <%= f.collection_select :category_id, Category.order('name ASC'), :id, :name, {include_blank: 'Selecione uma Categoria'}, {class: 'form-control'} %>
-          </section>
-
           <section class="row">
             <section class="col-6 form-group">
               Descrição da compra* <br />
