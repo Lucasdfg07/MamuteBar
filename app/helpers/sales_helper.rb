@@ -4,7 +4,7 @@ module SalesHelper
 			{
 				created_at: date,
 				received: Request.joins(:product).where("date(requests.created_at) = ?", date).sum("requests.quantity * price"),
-				spent: Pucharse.where("date(created_at) = ?", date).sum("quantity * price")
+				spent: Pucharse.where("date(created_at) = ?", date).sum("price")
 			}
 		end
 	end
