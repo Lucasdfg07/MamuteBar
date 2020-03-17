@@ -2,6 +2,10 @@
   <h3>Categorias Cadastradas</h3>
 
   <hr />
+    <%= image_tag '/category.png', alt: 'Category icon' %>
+    Cadastre aqui as categorias referente aos produtos!
+    <%= image_tag '/backend.png', alt: 'Backend icon' %>
+  <hr />
 
   <table class="table table-bordered table-hover">
     <thead>
@@ -23,6 +27,8 @@
       <% end %>
     </tbody>
   </table>
+
+  <%= will_paginate @categories %>
 
   <br />
 

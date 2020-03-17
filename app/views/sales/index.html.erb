@@ -1,6 +1,8 @@
 <section class="text-center">
   <h3>Vendas Cadastradas</h3>
 
+  <%= image_tag '/money.png', alt: 'money image' %> 
+
   <hr />
 
   <% @products.each do |product| %>
@@ -10,6 +12,10 @@
       </section>
     <% end %>
   <% end %>
+
+  <hr />
+
+  <%= link_to 'Visualizar Gráficos', sales_graph_path, class: 'btn btn-info' %>
 
   <hr />
 
@@ -51,7 +57,13 @@
             </section>
           </section>
           <br />
-          <%= link_to 'Fechar conta', edit_sale_path(table), class: 'btn btn-dark' %>
+          <%= form_for request, url: {action: 'edit', id: table}, class: 'payment-form' do |f| %>
+            <div class="field form-group">
+              Forma de Pagamento: <%= f.select :payment, ['Cartão', 'Dinheiro'], {class: 'form-control'} %>
+            </div>
+            
+            <%= f.submit 'Fechar conta', class: 'btn btn-dark' %>
+          <% end %>
         </section>
       </section>
     <% end %>

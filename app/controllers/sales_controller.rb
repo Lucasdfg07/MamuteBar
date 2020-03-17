@@ -7,14 +7,23 @@ class SalesController < ApplicationController
   end
 
   def edit
+  end
+
+  def update
     table_id = params[:id]
+    payment = params[:request][:payment]
+
     request = Request.where(table: table_id, status: :opened)
 
     request.each do |r|
-      r.close_table_bill(table_id)
+      r.close_table_bill(table_id, payment)
     end
 
     redirect_to sales_path, notice: 'Mesa fechada com sucesso!'
+  end
+
+  def graph
+    @products = Product.all
   end
 
 end

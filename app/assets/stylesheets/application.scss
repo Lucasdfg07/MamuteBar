@@ -1,6 +1,7 @@
 
 @import "bootstrap";
 @import "font-awesome";
+@import 'morrisjs-rails';
 
 @import 'devise';
 @import 'sales';
@@ -14,4 +15,8 @@
   .table {
     margin-top: 30px;
   }
+}
+
+.alert {
+	position: absolute;
 }

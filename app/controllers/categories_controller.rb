@@ -1,7 +1,7 @@
 class CategoriesController < ApplicationController
   def index
     @count = 0
-    @categories = Category.order(name: :ASC)
+    @categories = Category.order(name: :ASC).paginate(page: params[:page], per_page: 10)
   end
 
   def new

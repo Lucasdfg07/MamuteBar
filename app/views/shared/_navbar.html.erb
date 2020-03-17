@@ -19,7 +19,17 @@
       </li>
 
       <li class="nav-item col">
-        <%= link_to 'Estoque', products_path, class: 'nav_li' %>
+        <div class="dropdown">
+          <a class="navbar-link dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Cadastro
+          </a>
+
+          <div class="dropdown-menu">
+            <%= link_to 'De Estoque', products_path, class: 'dropdown-item' %>
+            <hr />
+            <%= link_to 'De Mercado', pucharses_path, class: 'dropdown-item' %>
+          </div>
+        </div>
       </li>
 
       <li class="nav-item col">
@@ -27,7 +37,9 @@
       </li>
 
       <li class="nav-item col">
-        <%= link_to "Sair", destroy_user_session_path, method: :delete, :class => "nav_li"  %>
+        <%= link_to destroy_user_session_path, method: :delete do %>
+          <%= fa_icon 'arrow-right' %>
+        <% end %> 
       </li>
     </ul>
   </section>
