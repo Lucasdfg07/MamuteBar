@@ -54,15 +54,29 @@ Here are the technologies used in this project.
 
 ### 1 - Log into the app and register your categories.
 
-### 2 - Register your products and your periodic pucharses at the market.
+### 2 - Register your stocked products and your periodic pucharses at the market.
+
+![Products image](https://github.com/Lucasdfg07/MamuteBar/blob/master/public/img5.png)
+
+![Pucharse image](https://github.com/Lucasdfg07/MamuteBar/blob/master/public/img3.png)
 
 ### 3 - Register your requests at your bar.
 
+![Requests image](https://github.com/Lucasdfg07/MamuteBar/blob/master/public/img2.png)
+
 ### 4 - See your table's requests at the sale's view.
+
+![Sales first image](https://github.com/Lucasdfg07/MamuteBar/blob/master/public/img1.png)
+
+![Sales second image](https://github.com/Lucasdfg07/MamuteBar/blob/master/public/img6.png)
 
 ### 5 - Choose if the payment will be on money or on cash.
 
 ### 6 - That's it. Close the bill and click into the graph button to see your results into the graph.
+
+![Path image](https://github.com/Lucasdfg07/MamuteBar/blob/master/public/img8.png)
+
+![Path image](https://github.com/Lucasdfg07/MamuteBar/blob/master/public/img7.png)
 
 
 
