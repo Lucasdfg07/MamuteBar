@@ -37,7 +37,9 @@
       </li>
 
       <li class="nav-item col">
-        <a href="/users/sign_out" title="Sair" class='nav_li sign_out'><%= fa_icon 'arrow-right' %></a>
+        <%= link_to destroy_user_session_path, method: :delete do %>
+          <%= fa_icon 'arrow-right' %>
+        <% end %> 
       </li>
     </ul>
   </section>
