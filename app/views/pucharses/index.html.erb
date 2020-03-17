@@ -11,16 +11,12 @@
   <hr />
 
   <%= search_form_for @q do |f| %>
-    <section class="row">
-      <section class="col-md-9 form-group">
-        <%= f.label :nome %>
-        <%= f.collection_select(:id_eq, Pucharse.all, :id, :name, {include_blank: 'Selecione'}, {class: 'form-control'}) %>
-      </section>
-
-      <section class="col-md-3 form-group">
-        <%= f.submit 'Procurar', class: 'btn btn-dark' %>
-      </section>
+    <section class="col-md-12 form-group">
+      <%= f.label :nome %>
+      <%= f.collection_select(:id_eq, Pucharse.all, :id, :name, {include_blank: 'Selecione'}, {class: 'form-control'}) %>
     </section>
+    
+    <%= f.submit 'Procurar', class: 'btn btn-dark' %>
   <% end %>
 
   <hr />
