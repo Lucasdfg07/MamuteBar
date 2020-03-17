@@ -33,6 +33,7 @@
         <th>Id</th>
         <th>Nome</th>
         <th>Preço total da compra R$</th>
+        <th>Data</th>
         <th></th>
       </tr>
     </thead>
@@ -43,6 +44,7 @@
           <td><%= pucharse.id %></td>
           <td><%= pucharse.name %></td>
           <td><%= pucharse.price %></td>
+          <td><%= pucharse.created_at %></td>
           <td><%= link_to 'Editar', edit_pucharse_path(pucharse) %></td>
         </tr>
       <% end %>
