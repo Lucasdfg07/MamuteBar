@@ -2,9 +2,10 @@ class CreateRequests < ActiveRecord::Migration[5.0]
   def change
     create_table :requests do |t|
       t.references :product, foreign_key: true
+      t.string :owner
       t.integer :quantity
       t.integer :table
-      t.integer :table_unique, default: '0'
+      t.string :payment
       t.string :status, default: 'opened'
 
       t.timestamps

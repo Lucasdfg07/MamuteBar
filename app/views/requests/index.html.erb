@@ -2,6 +2,33 @@
   <h3>Tela de Pedidos</h3>
 
   <hr />
+    Cadastre os pedidos dos clientes aqui! <br />
+    <%= image_tag '/market_raising.png', alt: 'market raising image' %> 
+    <%= image_tag '/sell.png', alt: 'sell image' %> 
+  <hr />
+
+  <%= search_form_for @q do |f| %>
+    <section class="col-md-4 form-group offset-4">
+      <%= f.label :mesa %>
+      <%= f.number_field :table_eq, min: 1, class: 'form-control' %>
+    </section>
+
+    <section class="row">
+      <section class="col-md-6 form-group">
+        <%= f.label :dono_da_comanda %>
+        <%= f.collection_select(:owner_eq, Request.where(status: :opened).uniq, :id, :owner, {include_blank: 'Selecione'}, {class: 'form-control'}) %>
+      </section>
+
+      <section class="col-md-6 form-group">
+        <%= f.label :Pedido %>
+        <%= f.collection_select(:product_id_eq, Product.all, :id, :name, {include_blank: 'Selecione'}, {class: 'form-control'}) %>
+      </section>
+    </section>
+
+    <%= f.submit 'Procurar', class: 'btn btn-dark' %>
+  <% end %>
+
+  <hr />
 
   <section class="pull-left">
     <%= link_to 'Cadastrar novo Pedido', new_request_path, class: 'btn btn-info' %>
@@ -13,6 +40,7 @@
     <thead>
       <tr>
         <th>Mesa</th>
+        <th>Dono da comanda</th>
         <th>Pedido</th>
         <th>Quantidade un.</th>
         <th>Preço Total</th>
@@ -24,6 +52,7 @@
       <% @requests.each do |request| %>
         <tr>
           <td><%= request.table %></td>
+          <td><%= request.owner %></td>
           <td><%= request.product.name %></td>
           <td><%= request.quantity %></td>
           <td>R$ <%= request.product.price * request.quantity %></td>
@@ -33,4 +62,6 @@
       <% end %>
     </tbody>
   </table>
+
+  <%= will_paginate @requests %>
 </section>
