@@ -38,6 +38,6 @@ class PucharsesController < ApplicationController
   end
 
   def product_params
-    params.require(:pucharse).permit(:category_id, :name, :quantity, :price)
+    params.require(:pucharse).permit(:name, :price)
   end
 end
