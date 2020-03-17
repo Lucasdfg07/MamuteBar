@@ -54,6 +54,10 @@ Here are the technologies used in this project.
 
 ### 1 - Log into the app and register your categories.
 
+![Products image](https://github.com/Lucasdfg07/MamuteBar/blob/master/public/img9.png)
+
+![Products image](https://github.com/Lucasdfg07/MamuteBar/blob/master/public/img10.png)
+
 ### 2 - Register your stocked products and your periodic pucharses at the market.
 
 ![Products image](https://github.com/Lucasdfg07/MamuteBar/blob/master/public/img5.png)
