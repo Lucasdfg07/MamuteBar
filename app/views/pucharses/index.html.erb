@@ -44,7 +44,7 @@
           <td><%= pucharse.id %></td>
           <td><%= pucharse.name %></td>
           <td><%= pucharse.price %></td>
-          <td><%= pucharse.created_at %></td>
+          <td><%= pucharse.created_at.strftime("%d/%m/%Y") %></td>
           <td><%= link_to 'Editar', edit_pucharse_path(pucharse) %></td>
         </tr>
       <% end %>
