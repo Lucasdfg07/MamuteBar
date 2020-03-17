@@ -22,7 +22,7 @@
         <tr>
           <td><%= @count %></td>
           <td><%= category.name %></td>
-          <td><%= link_to 'Apagar', categories_path(category), :method => "delete", data: { confirm: 'Tem certeza?' }, class: 'btn btn-danger' %></td>
+          <td><%= link_to 'Editar', edit_category_path(category), class: 'btn btn-info' %></td>
         </tr>
       <% end %>
     </tbody>

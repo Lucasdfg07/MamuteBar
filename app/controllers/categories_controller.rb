@@ -1,4 +1,6 @@
 class CategoriesController < ApplicationController
+  before_action :set_category, only: [:edit, :update]
+
   def index
     @count = 0
     @categories = Category.order(name: :ASC).paginate(page: params[:page], per_page: 10)
@@ -18,9 +20,16 @@ class CategoriesController < ApplicationController
     end
   end
 
-  def destroy
-    @category.destroy
-    redirect_to requests_path, notice: 'Categoria Apagada com sucesso!'
+
+  def edit
+  end
+
+  def update
+    if @category.update(category_params)
+      redirect_to categories_path, notice: 'Categoria alterada com sucesso!'
+    else
+      redirect_to categories_path, notice: 'Erro na alteração da categoria, tente mais tarde.'
+    end
   end
 
   private
