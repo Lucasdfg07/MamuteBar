@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200308161346) do
+ActiveRecord::Schema.define(version: 20200316193414) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -31,8 +31,19 @@ ActiveRecord::Schema.define(version: 20200308161346) do
     t.index ["category_id"], name: "index_products_on_category_id", using: :btree
   end
 
+  create_table "pucharses", force: :cascade do |t|
+    t.integer  "category_id"
+    t.string   "name"
+    t.integer  "quantity"
+    t.float    "price"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.index ["category_id"], name: "index_pucharses_on_category_id", using: :btree
+  end
+
   create_table "requests", force: :cascade do |t|
     t.integer  "product_id"
+    t.string   "owner"
     t.integer  "quantity"
     t.integer  "table"
     t.string   "payment"
@@ -55,5 +66,6 @@ ActiveRecord::Schema.define(version: 20200308161346) do
   end
 
   add_foreign_key "products", "categories"
+  add_foreign_key "pucharses", "categories"
   add_foreign_key "requests", "products"
 end

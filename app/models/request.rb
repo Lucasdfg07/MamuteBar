@@ -3,7 +3,7 @@ class Request < ApplicationRecord
 
   before_create :update_product_quantity
 
-  validates_presence_of :table, :quantity
+  validates_presence_of :table, :quantity, :owner
   validates :table_unique, :status, :payment, presence: false
 
 

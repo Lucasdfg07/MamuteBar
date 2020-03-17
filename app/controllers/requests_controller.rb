@@ -3,7 +3,8 @@ class RequestsController < ApplicationController
 
 
   def index
-    @requests = Request.where(status: :opened).order(table: :ASC).paginate(page: params[:page], per_page: 10)
+    @q = Request.ransack(params[:q])
+    @requests = @q.result.where(status: :opened).order(table: :ASC).paginate(page: params[:page], per_page: 10)
   end
 
   def new
@@ -45,6 +46,6 @@ class RequestsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def request_params
-      params.require(:request).permit(:product_id, :table, :quantity)
+      params.require(:request).permit(:product_id, :owner, :table, :quantity)
     end
 end

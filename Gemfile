@@ -27,6 +27,11 @@ gem 'bootstrap-sass'
 # Gem to generate graphs
 gem 'morrisjs-rails'
 gem 'raphael-rails'
+gem "chartkick"
+gem 'groupdate'
+
+# Search
+gem 'ransack'
 
 # Paginate
 gem 'will_paginate', '~> 3.1.0'

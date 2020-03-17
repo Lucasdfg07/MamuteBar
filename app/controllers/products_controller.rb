@@ -2,7 +2,8 @@ class ProductsController < ApplicationController
   before_action :set_product, only: [:show, :edit, :update, :destroy]
 
   def index
-    @products = Product.order(id: :ASC).paginate(page: params[:page], per_page: 10)
+    @q = Product.ransack(params[:q])
+    @products = @q.result.order(id: :ASC).paginate(page: params[:page], per_page: 10)
   end
 
   def new
@@ -37,6 +38,6 @@ class ProductsController < ApplicationController
   end
 
   def product_params
-    params.require(:product).permit(:category_id, :name, :quantity, :price)
+    params.require(:product).permit(:category_id, :owner, :name, :quantity, :price)
   end
 end

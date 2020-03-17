@@ -1,19 +1,20 @@
 <section class="text-center">
   <h3>
-    <%= image_tag '/limited-stock.png', alt: 'limited stock image' %> 
-    Produtos no Estoque 
-    <%= image_tag '/warehouse.png', alt: 'limited stock image' %>    
-  </h3> 
+    <%= image_tag '/market_house.png', alt: 'market image' %> 
+    Gastos com mercado
+    <%= image_tag '/market.png', alt: 'market image' %> 
+  </h3>
 
   <hr />
-    Aqui ficam cadastrados os produtos armazenados no estoque!
+    Aqui ficam cadastrados os gastos com mercado e/ou outros estabelecimentos
+    para mantimento dos produtos!
   <hr />
 
   <%= search_form_for @q do |f| %>
     <section class="row">
       <section class="col-md-6 form-group">
         <%= f.label :nome %>
-        <%= f.collection_select(:id_eq, Product.all, :id, :name, {include_blank: 'Selecione'}, {class: 'form-control'}) %>
+        <%= f.collection_select(:id_eq, Pucharse.all, :id, :name, {include_blank: 'Selecione'}, {class: 'form-control'}) %>
       </section>
 
       <section class="col-md-6 form-group">
@@ -28,7 +29,7 @@
   <hr />
 
   <section class="pull-right">
-    <%= link_to 'Cadastrar novo Produto', new_product_path, class: 'btn btn-info' %>
+    <%= link_to 'Cadastrar nova compra', new_pucharse_path, class: 'btn btn-info' %>
   </section>
 
   <br />
@@ -46,18 +47,18 @@
     </thead>
 
     <tbody>
-      <% @products.each do |product| %>
+      <% @pucharses.each do |pucharse| %>
         <tr>
-          <td><%= product.id %></td>
-          <td><%= product.name %></td>
-          <td><%= product.quantity %></td>
-          <td><%= product.price %></td>
-          <td><%= product.category.name %></td>
-          <td><%= link_to 'Editar', edit_product_path(product) %></td>
+          <td><%= pucharse.id %></td>
+          <td><%= pucharse.name %></td>
+          <td><%= pucharse.quantity %></td>
+          <td><%= pucharse.price %></td>
+          <td><%= pucharse.category.name %></td>
+          <td><%= link_to 'Editar', edit_pucharse_path(pucharse) %></td>
         </tr>
       <% end %>
     </tbody>
   </table>
 
-  <%= will_paginate @products %>
+  <%= will_paginate @pucharses %>
 </section>

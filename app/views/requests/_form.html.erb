@@ -18,6 +18,13 @@
 
   <br />
 
+  <div class="form_group">
+    <%= f.label :dono_da_comanda %>
+    <%= f.text_field :owner, placeholder: 'Dono da comanda ou pessoas à mesa', class: 'form-control', required: true %>
+  </div>
+
+  <br />
+
   <div class="row">
     <div class="form-group col-6">
       <%= f.label :Produto %>
@@ -26,7 +33,7 @@
 
     <div class="form-group col-6">
       <%= f.label :quantidade %>
-      <%= f.number_field :quantity, step: :any, class: 'form-control' %>
+      <%= f.number_field :quantity, step: :any, class: 'form-control', required: true %>
     </div>
   </div>
 
