@@ -28,3 +28,4 @@ $(function() {
     $('.alert').fadeOut(500);
   }, 2000);
 });
+//= require serviceworker-companion

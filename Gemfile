@@ -18,6 +18,7 @@ gem 'mini_magick'
 gem "font-awesome-rails"
 
 gem 'rails_admin', '~> 2.0'
+gem 'serviceworker-rails'
 gem 'cancancan'
 
 gem 'jquery-rails'
