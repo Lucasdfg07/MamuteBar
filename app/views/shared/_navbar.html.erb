@@ -2,23 +2,21 @@
   <h4 class="navbar-brand">Sistema Administrativo Mamute</h4>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
   aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-icon"></span>
-    <span class="navbar-icon"></span>
-    <span class="navbar-icon"></span>
+    <%= fa_icon 'bars' %>
   </button>
 
   <section class="collapse navbar-collapse" id="navbarNav">
     <ul class="navbar-nav text-center">
 
-      <li class="nav-item col">
+      <li class="nav-item">
         <%= link_to 'Vendas', root_path, class: 'nav_li' %>
       </li>
 
-      <li class="nav-item col">
+      <li class="nav-item">
         <%= link_to 'Pedidos', requests_path, class: 'nav_li' %>
       </li>
 
-      <li class="nav-item col">
+      <li class="nav-item">
         <div class="dropdown">
           <a class="navbar-link dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             Cadastro
@@ -32,11 +30,11 @@
         </div>
       </li>
 
-      <li class="nav-item col">
+      <li class="nav-item">
         <%= link_to 'Categorias', categories_path, class: 'nav_li' %>
       </li>
 
-      <li class="nav-item col">
+      <li class="nav-item">
         <%= link_to destroy_user_session_path, method: :delete do %>
           <%= fa_icon 'arrow-right' %>
         <% end %> 

@@ -229,6 +229,8 @@ GEM
       sprockets (> 3.0)
       sprockets-rails
       tilt
+    serviceworker-rails (0.6.0)
+      railties (>= 3.1)
     sidekiq (5.2.7)
       connection_pool (~> 2.2, >= 2.2.2)
       rack (>= 1.5.0)
@@ -296,6 +298,7 @@ DEPENDENCIES
   raphael-rails
   redis (~> 3.0)
   sass-rails (~> 5.0)
+  serviceworker-rails
   sidekiq (~> 5.0)
   spring
   spring-watcher-listen (~> 2.0.0)
