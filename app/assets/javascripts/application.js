@@ -20,6 +20,8 @@
 //= require chartkick
 //= require Chart.bundle
 //= require bootstrap-sprockets
+//= require serviceworker-companion
+//= require select2
 //= require_tree .
 
 // Set time to alert disappear
@@ -28,4 +30,9 @@ $(function() {
     $('.alert').fadeOut(500);
   }, 2000);
 });
-//= require serviceworker-companion
+
+$(document).ready(function() {
+  $('.js-searchable').select2({
+    theme: "bootstrap"
+  });
+});	

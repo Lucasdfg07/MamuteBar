@@ -46,6 +46,6 @@ class RequestsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def request_params
-      params.require(:request).permit(:product_id, :owner, :table, :quantity)
+      params.require(:request).permit(:owner, :table, products: [], quantity: [])
     end
 end

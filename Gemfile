@@ -31,6 +31,9 @@ gem 'raphael-rails'
 gem "chartkick"
 gem 'groupdate'
 
+# Multiple select
+gem "select2-rails"
+
 # Search
 gem 'ransack'
 

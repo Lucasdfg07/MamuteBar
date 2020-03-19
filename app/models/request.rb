@@ -1,10 +1,8 @@
 class Request < ApplicationRecord
-  belongs_to :product
+  # before_create :update_product_quantity
 
-  before_create :update_product_quantity
-
-  validates_presence_of :table, :quantity, :owner
-  validates :table_unique, :status, :payment, presence: false
+  validates_presence_of :table, :quantity, :owner, :products
+  validates :status, :payment, presence: false
 
 
   def sum_bill_total(table_id)

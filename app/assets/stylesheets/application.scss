@@ -1,3 +1,7 @@
+/*
+*= require select2
+*= require select2-bootstrap
+*/
 
 @import "bootstrap";
 @import "font-awesome";
@@ -7,6 +11,7 @@
 @import 'sales';
 @import 'categories';
 @import 'shared/navbar';
+
 
 .navbar-toggler {
 	background-color: rgba(240,240,240,0.7);

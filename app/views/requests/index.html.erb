@@ -21,7 +21,7 @@
 
       <section class="col-md-6 form-group">
         <%= f.label :Pedido %>
-        <%= f.collection_select(:product_id_eq, Product.all, :id, :name, {include_blank: 'Selecione'}, {class: 'form-control'}) %>
+        <%= f.collection_select(:products_eq, Product.all, :id, :name, {include_blank: 'Selecione'}, {class: 'form-control'}) %>
       </section>
     </section>
 
@@ -53,9 +53,9 @@
         <tr>
           <td><%= request.table %></td>
           <td><%= request.owner %></td>
-          <td><%= request.product.name %></td>
+          <td><%= request.products %></td>
           <td><%= request.quantity %></td>
-          <td>R$ <%= request.product.price * request.quantity %></td>
+          <td>R$ </td>
           <td><%= link_to 'Editar', edit_request_path(request), class: 'btn btn-info' %></td>
           <td><%= link_to 'Cancelar pedido', request_path(request), :method => "delete", data: { confirm: 'Tem certeza?' }, class: 'btn btn-danger' %></td>
         </tr>

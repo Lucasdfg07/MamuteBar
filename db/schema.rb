@@ -32,25 +32,21 @@ ActiveRecord::Schema.define(version: 20200316193414) do
   end
 
   create_table "pucharses", force: :cascade do |t|
-    t.integer  "category_id"
     t.string   "name"
-    t.integer  "quantity"
     t.float    "price"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
-    t.index ["category_id"], name: "index_pucharses_on_category_id", using: :btree
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "requests", force: :cascade do |t|
-    t.integer  "product_id"
+    t.string   "products",   default: [],                    array: true
     t.string   "owner"
-    t.integer  "quantity"
+    t.integer  "quantity",   default: [],                    array: true
     t.integer  "table"
     t.string   "payment"
     t.string   "status",     default: "opened"
     t.datetime "created_at",                    null: false
     t.datetime "updated_at",                    null: false
-    t.index ["product_id"], name: "index_requests_on_product_id", using: :btree
   end
 
   create_table "users", force: :cascade do |t|
@@ -66,6 +62,4 @@ ActiveRecord::Schema.define(version: 20200316193414) do
   end
 
   add_foreign_key "products", "categories"
-  add_foreign_key "pucharses", "categories"
-  add_foreign_key "requests", "products"
 end

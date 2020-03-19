@@ -26,14 +26,14 @@
   <br />
 
   <div class="row">
-    <div class="form-group col-6">
+    <div class="col-md-6 form-group">
       <%= f.label :Produto %>
-      <%= f.collection_select :product_id, Product.order('name ASC'), :id, :name, {include_blank: 'Selecione um Produto'}, {class: 'form-control'} %>
+      <%= f.collection_select :products, Product.order('name ASC'), :id, :name, {}, class: 'js-searchable form-control', multiple: true %>
     </div>
 
     <div class="form-group col-6">
       <%= f.label :quantidade %>
-      <%= f.number_field :quantity, step: :any, class: 'form-control', required: true %>
+      <%= f.number_field :quantity, step: :any, class: 'form-control', multiple: true, required: true %>
     </div>
   </div>
 
@@ -41,3 +41,10 @@
     <%= f.submit "Salvar", class: 'btn btn-info' %>
   </div>
 <% end %>
+
+
+<style text="text/stylesheet">
+  select {
+    display: none;
+  }
+</style>
