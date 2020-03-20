@@ -23,17 +23,30 @@
     <%= f.text_field :owner, placeholder: 'Dono da comanda ou pessoas à mesa', class: 'form-control', required: true %>
   </div>
 
-  <br />
+  <br /> 
 
-  <div class="row">
-    <div class="col-md-6 form-group">
-      <%= f.label :Produto %>
-      <%= f.collection_select :products, Product.order('name ASC'), :id, :name, {}, class: 'js-searchable form-control', multiple: true %>
-    </div>
+  <div class="row render_form">
 
-    <div class="form-group col-6">
-      <%= f.label :quantidade %>
-      <%= f.number_field :quantity, step: :any, class: 'form-control', multiple: true, required: true %>
+    <% for i in 1..@count %>
+      <%= content_tag :div, '', id: 'mycontainer', class: 'hidden', data: { source: @count } %>
+
+      <div class="col-md-6 form-group">
+        <%= f.label :Produto %>
+        <%= f.collection_select :products, Product.order('name ASC'), :id, :name, {}, class: 'js-searchable form-control', name: 'request[products][]' %>
+      </div>
+
+      <div class="form-group col-4">
+        <%= f.label :quantidade %>
+        <%= f.number_field :quantity, step: :any, class: 'form-control', multiple: true, required: true %>
+      </div>
+
+      <div class="form-group col-2 icon">
+        <%= link_to 'x', new_request_path(count: @count - 1) %>
+      </div>
+    <% end %>
+
+    <div class="add-aspects pull-right">
+      <%= link_to '+', new_request_path(count: @count + 1) %>
     </div>
   </div>
 
@@ -47,4 +60,4 @@
   select {
     display: none;
   }
-</style>
+</style> 

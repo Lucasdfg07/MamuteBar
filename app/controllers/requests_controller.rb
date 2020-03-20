@@ -9,6 +9,8 @@ class RequestsController < ApplicationController
 
   def new
     @request = Request.new
+
+    (params[:count]) ? @count = params[:count].to_i : @count = 1
   end
 
   def edit
