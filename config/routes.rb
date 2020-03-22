@@ -15,7 +15,15 @@ Rails.application.routes.draw do
   resources :categories
   resources :products
 
-  resources :requests
+  resources :requests do
+    collection do
+      get 'index'
+      post 'edit'
+      post 'update'
+      get 'decrement_products_and_quantity'
+      get 'increment_products_and_quantity'
+    end
+  end
   resources :pucharses
 
   root "sales#index"

@@ -1,5 +1,5 @@
 class RequestsController < ApplicationController
-  before_action :set_request, only: [:show, :edit, :update, :destroy]
+  before_action :set_request, except: [:index, :new]
 
 
   def index
@@ -8,12 +8,13 @@ class RequestsController < ApplicationController
   end
 
   def new
-    @request = Request.new
+    @request = Request.create(products: [""], quantity: [""])
 
-    (params[:count]) ? @count = params[:count].to_i : @count = 1
+    redirect_to edit_request_path(id: Request.last.id)
   end
 
   def edit
+    @count = 0
   end
 
   def create
@@ -26,11 +27,21 @@ class RequestsController < ApplicationController
     end
   end
 
+  def increment_products_and_quantity
+    if @request.add_product_and_quantity
+      redirect_to request.referrer
+    end
+  end
+
+  def decrement_products_and_quantity
+    if @request.remove_product_and_quantity
+      redirect_to request.referrer
+    end
+  end
+
   def update
     if @request.update(request_params)
-      redirect_to requests_path, notice: 'Pedido alterado com sucesso!'
-    else
-      redirect_to requests_path, notice: 'Erro na alteração do pedido, tente mais tarde.'
+      redirect_to request.referrer
     end
   end
 

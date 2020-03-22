@@ -4,6 +4,7 @@ class SalesController < ApplicationController
     @requests = Request.where(status: :opened).order(table: :ASC)
 
     @products = Product.all
+    @count = 0
   end
 
   def edit

@@ -51,11 +51,19 @@
     <tbody>
       <% @requests.each do |request| %>
         <tr>
-          <td><%= request.table %></td>
-          <td><%= request.owner %></td>
-          <td><%= request.products %></td>
-          <td><%= request.quantity %></td>
-          <td>R$ </td>
+          <td><%= (!request.table.blank?) ? request.table : '-' %></td>
+          <td><%= (!request.owner.blank?) ? request.owner : '-' %></td>
+          <td>
+            <% request.products.each do |product| %>
+              <%= (!product.blank?) ? Product.find(product.to_i).name : 'Não Cadastrado' %> <br />
+            <% end %>    
+          </td>
+          <td>
+            <% request.quantity.each do |quantity| %>
+              <%= (quantity) ? quantity : 'Não Cadastrado' %> <br />
+            <% end %>
+          </td>
+          <td>R$ <%= (!request.quantity.first.blank?) ? request.sum_request_total_price : '-' %> </td>
           <td><%= link_to 'Editar', edit_request_path(request), class: 'btn btn-info' %></td>
           <td><%= link_to 'Cancelar pedido', request_path(request), :method => "delete", data: { confirm: 'Tem certeza?' }, class: 'btn btn-danger' %></td>
         </tr>

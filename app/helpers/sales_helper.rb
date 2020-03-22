@@ -1,9 +1,18 @@
 module SalesHelper
 	def requests_chart_data
-		(3.month.ago.to_date..Date.today).map do |date|
+		total = 0
+		(3.month.ago.to_date..Date.today).map do |date| 
+			Request.where("date(created_at) = ?", date).each{ |r| 
+				count = 0
+				r.products.each{|product|
+					product_price = Product.find(product.to_i).price
+					total += product_price * r.quantity[count]
+					count += 1
+				}
+			}
 			{
 				created_at: date,
-				received: Request.joins(:product).where("date(requests.created_at) = ?", date).sum("requests.quantity * price"),
+				received: total,
 				spent: Pucharse.where("date(created_at) = ?", date).sum("price")
 			}
 		end
@@ -13,8 +22,8 @@ module SalesHelper
 	    (4.weeks.ago.to_date..Date.today).map do |date| 
 	    	{
 		      created_at: date.strftime('%d/%m/%Y'),
-		      cash: Request.where("date(requests.created_at) = ? AND payment = 'Dinheiro'", date).count,
-		      card: Request.where("date(requests.created_at) = ? AND payment = 'Cartão'", date).count
+		      cash: Request.where("date(created_at) = ? AND payment = 'Dinheiro'", date).count,
+		      card: Request.where("date(created_at) = ? AND payment = 'Cartão'", date).count
 		    }
 		end
     end
