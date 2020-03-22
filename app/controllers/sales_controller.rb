@@ -18,6 +18,7 @@ class SalesController < ApplicationController
 
     request.each do |r|
       r.close_table_bill(table_id, payment)
+      r.update_product_quantity
     end
 
     redirect_to sales_path, notice: 'Mesa fechada com sucesso!'

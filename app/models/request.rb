@@ -1,5 +1,4 @@
 class Request < ApplicationRecord
-  # after_update :update_product_quantity
 
   validates :table, :quantity, :owner, :products, :status, :payment, presence: false
 
@@ -59,8 +58,6 @@ class Request < ApplicationRecord
     table = Request.where(table: table_id, status: :opened)
     table.update(status: :closed, payment: payment)
   end
-
-  private
 
   def update_product_quantity
     if !self.products.last.blank?

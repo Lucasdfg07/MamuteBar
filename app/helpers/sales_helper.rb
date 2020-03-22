@@ -2,7 +2,7 @@ module SalesHelper
 	def requests_chart_data
 		total = 0
 		(3.month.ago.to_date..Date.today).map do |date| 
-			Request.where("date(created_at) = ?", date).each{ |r| 
+			Request.where("date(created_at) = ? AND status = 'closed'", date).each{ |r| 
 				count = 0
 				r.products.each{|product|
 					product_price = Product.find(product.to_i).price

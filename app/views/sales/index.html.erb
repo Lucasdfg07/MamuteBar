@@ -21,79 +21,81 @@
 
   <section class="row">
     <% @requests.group_by(&:table).each do |table, request| %>
-      <section class="col-md-4 text-center table_number border">
-        <%= image_tag 'bar.png', alt: 'Table Bar' %>
+      <% if !table.nil? %>
+        <section class="col-md-4 text-center table_number border">
+          <%= image_tag 'bar.png', alt: 'Table Bar' %>
 
-        <section class="description">
-          <h4><%= table %></h4>
-        </section>
+          <section class="description">
+            <h4><%= table %></h4>
+          </section>
 
-        <section class="bill_information">
-          <section class="informations">
-            <section class="field border-bottom">
-              <table class="table table-hover">
-                <thead>
-                  <tr>
-                    <th>Item</th>
-                    <th>Quantidade</th>
-                    <th>Preço</th>
-                  </tr>
-                </thead>
-
-                <% request.each do |r| %>
-                <tbody>
-                    <% r.products.zip(r.quantity).each do |product, quantity| %>
-                      <tr>
-                        <td>
-                          <%= (!product.blank?) ? Product.find(product.to_i).name : 'Não Cadastrado' %>
-                          </td>
-
-                          <td>
-                            <%= (quantity) ? quantity : 'Não Cadastrado' %> Un.
-                          </td>
-
-                          <td>
-                            R$ <%= r.item_price_on_bill(product, quantity) %>
-                          </td>
-                        </tr>
-                    <% end %>  
-                  </tbody>
-                <% end %>
-              </table>
-
-              <div class="field">
+          <section class="bill_information">
+            <section class="informations">
+              <section class="field border-bottom">
                 <table class="table table-hover">
                   <thead>
                     <tr>
-                      <th>Nome</th>
-                      <th>Total</th>
+                      <th>Item</th>
+                      <th>Quantidade</th>
+                      <th>Preço</th>
                     </tr>
                   </thead>
 
+                  <% request.each do |r| %>
                   <tbody>
-                    <% request.each do |r| %>
-                      <tr>
-                        <td><%= r.owner %></td>
-                        <td>R$ <%= r.sum_total_price_on_bill(table) %></td>
-                      </tr>
-                   <% end %>
-                  </tbody>
-                </table>
-              </div>
-            </section>
-          </section>
+                      <% r.products.zip(r.quantity).each do |product, quantity| %>
+                        <tr>
+                          <td>
+                            <%= (!product.blank?) ? Product.find(product.to_i).name : 'Não Cadastrado' %>
+                            </td>
 
-          <br />
-          
-          <%= form_for request, url: {action: 'edit', id: table}, class: 'payment-form' do |f| %>
-            <div class="field form-group">
-              Forma de Pagamento: <%= f.select :payment, ['Cartão', 'Dinheiro'], {class: 'form-control'} %>
-            </div>
+                            <td>
+                              <%= (quantity) ? quantity : 'Não Cadastrado' %> Un.
+                            </td>
+
+                            <td>
+                              R$ <%= r.item_price_on_bill(product, quantity) %>
+                            </td>
+                          </tr>
+                      <% end %>  
+                    </tbody>
+                  <% end %>
+                </table>
+
+                <div class="field">
+                  <table class="table table-hover">
+                    <thead>
+                      <tr>
+                        <th>Nome</th>
+                        <th>Total</th>
+                      </tr>
+                    </thead>
+
+                    <tbody>
+                      <% request.each do |r| %>
+                        <tr>
+                          <td><%= r.owner %></td>
+                          <td>R$ <%= r.sum_total_price_on_bill(table) %></td>
+                        </tr>
+                     <% end %>
+                    </tbody>
+                  </table>
+                </div>
+              </section>
+            </section>
+
+            <br />
             
-            <%= f.submit 'Fechar conta', class: 'btn btn-dark' %>
-          <% end %>
+            <%= form_for request, url: {action: 'edit', id: table}, class: 'payment-form' do |f| %>
+              <div class="field form-group">
+                Forma de Pagamento: <%= f.select :payment, ['Cartão', 'Dinheiro'], {class: 'form-control'} %>
+              </div>
+              
+              <%= f.submit 'Fechar conta', class: 'btn btn-dark' %>
+            <% end %>
+          </section>
         </section>
-      </section>
+      <% end %>  
     <% end %>
   </section>
 </section>
