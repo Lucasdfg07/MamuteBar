@@ -58,7 +58,7 @@
               <%= (quantity) ? quantity : 'Não Cadastrado' %> <br />
             <% end %>
           </td>
-          <td>R$ <%= (!request.quantity.first.blank?) ? request.sum_request_total_price : '-' %> </td>
+          <td>R$ <%= request.sum_request_total_price %> </td>
           <td><%= link_to 'Editar', edit_request_path(request), class: 'btn btn-info' %></td>
           <td><%= link_to 'Cancelar pedido', request_path(request), :method => "delete", data: { confirm: 'Tem certeza?' }, class: 'btn btn-danger' %></td>
         </tr>

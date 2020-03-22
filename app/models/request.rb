@@ -21,11 +21,13 @@ class Request < ApplicationRecord
     total = 0
     count = 0
     self.products.each do |product|
-      product_price = Product.find(product.to_i).price
+      if !product.blank?
+        product_price = Product.find(product.to_i).price
 
-      total += product_price * self.quantity[count]
+        total += product_price * self.quantity[count]
 
-      count += 1
+        count += 1
+      end
     end
 
     total
