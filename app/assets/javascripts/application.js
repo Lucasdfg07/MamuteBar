@@ -15,14 +15,12 @@
 //= require turbolinks
 //= require jquery3
 //= require popper
-//= require raphael
-//= require morris
-//= require chartkick
-//= require Chart.bundle
 //= require bootstrap-sprockets
 //= require serviceworker-companion
 //= require select2
 //= require_tree .
+//= require raphael
+//= require morris
 
 // Set time to alert disappear
 $(function() {

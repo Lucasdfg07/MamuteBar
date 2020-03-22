@@ -28,7 +28,6 @@ gem 'bootstrap-sass'
 # Gem to generate graphs
 gem 'morrisjs-rails'
 gem 'raphael-rails'
-gem "chartkick"
 gem 'groupdate'
 
 # Multiple select

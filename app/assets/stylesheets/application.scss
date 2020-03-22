@@ -5,13 +5,14 @@
 
 @import "bootstrap";
 @import "font-awesome";
-@import 'morrisjs-rails';
 
 @import 'devise';
 @import 'sales';
 @import 'categories';
 @import 'shared/navbar';
 @import 'requests';
+
+@import 'morrisjs-rails';
 
 
 .navbar-toggler {
