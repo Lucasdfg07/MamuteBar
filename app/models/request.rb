@@ -35,10 +35,11 @@ class Request < ApplicationRecord
 
   def item_price_on_bill(product, quantity)
     total = 0
+    if !product.blank? || !quantity.blank?
+      product_price = Product.find(product.to_i).price
 
-    product_price = Product.find(product.to_i).price
-
-    total = product_price * quantity
+      total = product_price * quantity
+    end
   end
 
   def sum_total_price_on_bill(table)
