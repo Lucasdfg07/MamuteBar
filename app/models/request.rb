@@ -49,9 +49,11 @@ class Request < ApplicationRecord
 
     total = 0
     self.products.zip(self.quantity).each do |product, quantity|
-      product_price = Product.find(product.to_i).price
+      if !product.blank? || !quantity.blank?
+        product_price = Product.find(product.to_i).price
 
-      total += product_price * quantity
+        total += product_price * quantity
+      end
     end
 
     total
@@ -63,9 +65,9 @@ class Request < ApplicationRecord
   end
 
   def update_product_quantity
-    if !self.products.last.blank?
-      count = 0
-      self.products.each do |p|
+    count = 0
+    self.products.each do |p|
+      if !p.blank?
         product = Product.find(p.to_i)
         result = product.quantity - self.quantity[count]
 
