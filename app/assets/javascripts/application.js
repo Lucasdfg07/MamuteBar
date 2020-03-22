@@ -15,12 +15,11 @@
 //= require turbolinks
 //= require jquery3
 //= require popper
-//= require bootstrap-sprockets
-//= require serviceworker-companion
-//= require select2
-//= require_tree .
 //= require raphael
 //= require morris
+//= require bootstrap-sprockets
+//= require select2
+//= require_tree .
 
 // Set time to alert disappear
 $(function() {
@@ -28,6 +27,7 @@ $(function() {
     $('.alert').fadeOut(500);
   }, 2000);
 });
+//= require serviceworker-companion
 
 $(document).ready(function() {
   $('.js-searchable').select2({
