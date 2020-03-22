@@ -4,9 +4,9 @@
       <h2><%= pluralize(request.errors.count, "error") %> prohibited this request from being saved:</h2>
 
       <ul>
-      <% request.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
+        <% request.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
       </ul>
     </div>
   <% end %>
@@ -23,21 +23,43 @@
     <%= f.text_field :owner, placeholder: 'Dono da comanda ou pessoas à mesa', class: 'form-control', required: true %>
   </div>
 
-  <br />
+  <br /> 
 
-  <div class="row">
-    <div class="form-group col-6">
-      <%= f.label :Produto %>
-      <%= f.collection_select :product_id, Product.order('name ASC'), :id, :name, {include_blank: 'Selecione um Produto'}, {class: 'form-control'} %>
-    </div>
+  <div class="row render_form">
 
-    <div class="form-group col-6">
-      <%= f.label :quantidade %>
-      <%= f.number_field :quantity, step: :any, class: 'form-control', required: true %>
-    </div>
+    <% @request.products.each do |product| %>
+      <div class="col-6 form-group">
+        <%= f.label :Produto %>
+        <%= f.collection_select :products, (!product.empty?) ? Product.where(id: product) : Product.order(name: :ASC), :id, :name, {}, class: 'form-control', name: 'request[products][]' %>
+      </div>
+
+      <div class="form-group col-6">
+        <%= f.label :quantidade %>
+        <%= f.number_field :quantity, step: :any, value: @request.quantity[@count], class: 'form-control', multiple: true, required: true %>
+      </div>
+
+      <%= content_tag :div, '', class: 'hidden', data: { source: @count += 1 } %>
+    <% end %>
   </div>
 
-  <div class="actions">
-    <%= f.submit "Salvar", class: 'btn btn-info' %>
+  <div class="text-center">
+    <%= link_to 'Salvar', requests_path, class: 'btn btn-info' %>
+  </div>
+
+  <div class="add-aspects pull-right">
+    <%= link_to decrement_products_and_quantity_requests_path(id: params[:id]) do %>
+      <%= fa_icon 'minus' %>
+    <% end %>
+
+    <%= link_to increment_products_and_quantity_requests_path(id: params[:id]) do %>
+      <%= fa_icon 'plus' %>
+    <% end %>
   </div>
 <% end %>
+
+
+<style text="text/stylesheet">
+  select {
+    display: none;
+  }
+</style> 
