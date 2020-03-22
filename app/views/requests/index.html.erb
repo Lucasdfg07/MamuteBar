@@ -8,20 +8,15 @@
   <hr />
 
   <%= search_form_for @q do |f| %>
-    <section class="col-md-4 form-group offset-md-4">
-      <%= f.label :mesa %>
-      <%= f.number_field :table_eq, min: 1, class: 'form-control' %>
-    </section>
-
     <section class="row">
-      <section class="col-md-6 form-group">
-        <%= f.label :dono_da_comanda %>
-        <%= f.collection_select(:owner_eq, Request.where(status: :opened).uniq, :id, :owner, {include_blank: 'Selecione'}, {class: 'form-control'}) %>
+      <section class="col-6 form-group">
+        <%= f.label :mesa %>
+        <%= f.number_field :table_eq, min: 1, class: 'form-control' %>
       </section>
 
-      <section class="col-md-6 form-group">
-        <%= f.label :Pedido %>
-        <%= f.collection_select(:products_eq, Product.all, :id, :name, {include_blank: 'Selecione'}, {class: 'form-control'}) %>
+      <section class="col-6 form-group">
+        <%= f.label :dono_da_comanda %>
+        <%= f.collection_select(:owner_eq, Request.where(status: :opened).uniq, :owner, :owner, {include_blank: 'Selecione'}, {class: 'form-control'}) %>
       </section>
     </section>
 
