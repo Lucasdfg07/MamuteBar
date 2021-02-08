@@ -12,7 +12,7 @@ gem 'devise-i18n'
 gem 'redis', '~> 3.0'
 gem 'sidekiq', '~> 5.0'
 
-gem 'carrierwave', '~> 2.0'
+gem 'carrierwave', '~> 2.1'
 gem 'mini_magick'
 
 gem "font-awesome-rails"
